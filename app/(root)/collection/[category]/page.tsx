@@ -12,7 +12,7 @@ import { Metadata } from "next";
 const Category = async ({
 	params,
 }: {
-	params: Promise<{ category: string }>;
+	params: { category: string };
 }) => {
 	const category = (await params).category;
 	const categorymain = await client.fetch(CATEGORY_FETCH_QUERY, { category });
