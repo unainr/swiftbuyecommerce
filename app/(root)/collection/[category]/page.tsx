@@ -14,7 +14,7 @@ const Category = async ({
 }: {
 	params: { category: string };
 }) => {
-	const category = (await params).category;
+	const { category } = params;
 	const categorymain = await client.fetch(CATEGORY_FETCH_QUERY, { category });
 	if (!categorymain || categorymain.length === 0) return notFound();
 
@@ -107,7 +107,7 @@ export async function generateMetadata({
 }: {
     params: { category: string };
 }): Promise<Metadata> {
-    const { category } = await params; // Await the `params` object if required
+    const { category } = params; // Await the `params` object if required
     return {
         title: `${category} | SwiftBuy`,
         description: `Browse our ${category} collection`,
