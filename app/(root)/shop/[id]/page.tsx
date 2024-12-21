@@ -116,11 +116,7 @@ const Products = async ({ params }: { params: Params }) => {
 
 export default Products;
 
-export async function generateMetadata({
-    params,
-}: {
-    params: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
 	const id = (await params).id;
     const products = await client.fetch(PRODUCT_FETCH_QUERY);
     const product = products.find((product: any) => product._id === id);
