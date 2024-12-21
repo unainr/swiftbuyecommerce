@@ -13,8 +13,8 @@ import { Metadata } from "next";
 interface CategoryPageProps {
     params: { category: string };
 }
-const Category = async ({ params }: CategoryPageProps):Promise<any> => {
-	const category = (await params).category;
+const Category = async ({ params }: CategoryPageProps) => {
+	const { category } = await Promise.resolve(params); 
 	const categorymain = await client.fetch(CATEGORY_FETCH_QUERY, { category });
 	if (!categorymain || categorymain.length === 0) return notFound();
 
@@ -103,7 +103,7 @@ const Category = async ({ params }: CategoryPageProps):Promise<any> => {
 export default Category;
 
 export async function generateMetadata({params}:CategoryPageProps): Promise<Metadata> {
-    const { category } = await params; // Await the `params` object if required
+    const { category } = await Promise.resolve(params);  // Await the `params` object if required
     return {
         title: `${category} | SwiftBuy`,
         description: `Browse our ${category} collection`,
