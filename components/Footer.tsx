@@ -115,14 +115,14 @@ const Footer = () => {
 											</Link>
 										</li>
 										<li>
-											<a href="/terms" className="text-md leading-6 ">
+											<Link href="/terms" className="text-md leading-6 ">
 												Terms of Service
-											</a>
+											</Link>
 										</li>
 										<li>
-											<a href="/privacy" className="text-md leading-6 ">
+											<Link href="/privacy" className="text-md leading-6 ">
 												Privacy Policy
-											</a>
+											</Link>
 										</li>
 									</ul>
 								</div>
@@ -147,10 +147,10 @@ const Footer = () => {
 					<div className="mt-16 border-t border-gray-400/30 pt-8 sm:mt-20 lg:mt-24">
 						<div className="text-md text-center ">
 							Copyright © 2024
-							<a rel="noopener" href="/">
+							<Link rel="noopener" href="/">
 								{" "}
 								Swift Buy.
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>
