@@ -13,7 +13,7 @@ import { Metadata } from "next";
 interface CategoryPageProps {
     params: { category: string };
 }
-const Category = async ({ params }: CategoryPageProps) => {
+const Category = async ({ params }: CategoryPageProps):Promise<any> => {
 	const category = (await params).category;
 	const categorymain = await client.fetch(CATEGORY_FETCH_QUERY, { category });
 	if (!categorymain || categorymain.length === 0) return notFound();
