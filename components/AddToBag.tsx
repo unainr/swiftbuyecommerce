@@ -27,7 +27,8 @@ const AddToBag = ({name,description,price,image,currency,id}:AddToBagProps) => {
     }
   return (
     <Button 
-    onClick={()=>{addItem(product),handleCartClick()}} 
+    onClick={()=>{addItem(product)
+      handleCartClick()}} 
     className="whitespace-nowrap border-none text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow relative inline-flex h-10 items-center justify-center rounded-md border border-slate-800 bg-blue-600 px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 hover:bg-blue-700 overflow-hidden"
     
   >
