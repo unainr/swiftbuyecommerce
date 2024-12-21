@@ -9,10 +9,10 @@ import HerickyBanner from "@/components/HerickyBanner";
 import AddToCart from "@/components/CheckOutNow";
 import { Metadata } from "next";
 
-type Params = Promise<{ id: string }>;
+// type Params = Promise<{ id: string }>;
 
 
-const Products = async ({ params }: { params: Params }) => {
+const Products = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id;
 	const products = await client.fetch(PRODUCT_FETCH_QUERY);
 	if (!products) return notFound();
@@ -116,7 +116,7 @@ const Products = async ({ params }: { params: Params }) => {
 
 export default Products;
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
 	const id = (await params).id;
     const products = await client.fetch(PRODUCT_FETCH_QUERY);
     const product = products.find((product: any) => product._id === id);
