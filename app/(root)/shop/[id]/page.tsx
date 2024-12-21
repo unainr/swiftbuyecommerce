@@ -11,7 +11,6 @@ import { Metadata } from "next";
 
 // type Params = Promise<{ id: string }>;
 
-
 const Products = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id;
 	const products = await client.fetch(PRODUCT_FETCH_QUERY);
@@ -20,7 +19,7 @@ const Products = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const { _id, name, CategoryName, description, price, images } = product;
 	return (
 		<>
-		<HerickyBanner heading={name} breadcrumb={CategoryName} />
+			<HerickyBanner heading={name} breadcrumb={CategoryName} />
 			<div className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex flex-col lg:flex-row gap-12">
@@ -91,7 +90,6 @@ const Products = async ({ params }: { params: Promise<{ id: string }> }) => {
 
 							{/* Actions */}
 							<div className="flex flex-col sm:flex-row gap-4 pt-6 border-t dark:border-gray-700">
-								
 								<div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
 									<AddToBag
 										currency="USD"
@@ -102,7 +100,14 @@ const Products = async ({ params }: { params: Promise<{ id: string }> }) => {
 										key={_id}
 										id={_id}
 									/>
-									<AddToCart name={name} description={description} price={price} image={images[0]} currency="USD" id={_id}/>
+									<AddToCart
+										name={name}
+										description={description}
+										price={price}
+										image={images[0]}
+										currency="USD"
+										id={_id}
+									/>
 								</div>
 							</div>
 						</div>
@@ -116,21 +121,24 @@ const Products = async ({ params }: { params: Promise<{ id: string }> }) => {
 
 export default Products;
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ id: string }>;
+}): Promise<Metadata> {
 	const id = (await params).id;
-    const products = await client.fetch(PRODUCT_FETCH_QUERY);
-    const product = products.find((product: any) => product._id === id);
+	const products = await client.fetch(PRODUCT_FETCH_QUERY);
+	const product = products.find((product: any) => product._id === id);
 
-    if (!product) {
-        return {
-            title: "Product Not Found | SwiftBuy",
-            description: "We couldn't find the product you're looking for.",
-        };
-    }
+	if (!product) {
+		return {
+			title: "Product Not Found | SwiftBuy",
+			description: "We couldn't find the product you're looking for.",
+		};
+	}
 
-    return {
-        title: `${product.name} | SwiftBuy`,
-        description: `Discover premium products like ${product.name}. Shop now for the best in ${product.CategoryName}!`,
-    };
+	return {
+		title: `${product.name} | SwiftBuy`,
+		description: `Discover premium products like ${product.name}. Shop now for the best in ${product.CategoryName}!`,
+	};
 }
-  

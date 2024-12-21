@@ -12,7 +12,11 @@ import { Metadata } from "next";
 
 // type Params = Promise<{ category: string }>;
 
-const Category = async ({params}: {params: Promise<{ category: string }>}) => {
+const Category = async ({
+	params,
+}: {
+	params: Promise<{ category: string }>;
+}) => {
 	const { category } = await params;
 	// const category = (await params).category;
 
@@ -110,7 +114,11 @@ const Category = async ({params}: {params: Promise<{ category: string }>}) => {
 
 export default Category;
 
-export async function generateMetadata({params}: {params: Promise<{ category: string }>}): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ category: string }>;
+}): Promise<Metadata> {
 	const { category } = await params; // Await the `params` object if required
 	return {
 		title: `${category} | SwiftBuy`,
