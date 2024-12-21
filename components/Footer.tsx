@@ -9,7 +9,7 @@ const Footer = () => {
 					<div className="xl:grid xl:grid-cols-3 xl:gap-8">
 						<div className="space-y-4">
 							<div>
-								<a href="/">
+								<Link href="/">
 									<div className="flex items-center space-x-2 text-2xl font-medium">
 										<span>
 											<Image
@@ -21,7 +21,7 @@ const Footer = () => {
 											/>
 										</span>
 									</div>
-								</a>
+								</Link>
 							</div>
 							<div className="max-w-md pr-16 text-md ">
 								Enhance productivity and efficiency with cutting-edge artificial
