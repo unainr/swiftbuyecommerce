@@ -11,6 +11,7 @@ import HerickyBanner from "@/components/HerickyBanner";
 import { Metadata } from "next";
 
 type Params = Promise<{ category: string }>;
+
 interface CategoryPageProps {
 	params: Params;
 }  
