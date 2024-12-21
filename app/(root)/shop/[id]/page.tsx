@@ -8,10 +8,10 @@ import RelatedProducts from "@/components/RelatedProducts";
 import HerickyBanner from "@/components/HerickyBanner";
 import AddToCart from "@/components/CheckOutNow";
 import { Metadata } from "next";
+
 type Params = Promise<{ id: string }>;
-interface CategoryPageProps {
-	params: Params;
-}
+
+
 const Products = async ({ params }: { params: Params }) => {
 	const id = (await params).id;
 	const products = await client.fetch(PRODUCT_FETCH_QUERY);
