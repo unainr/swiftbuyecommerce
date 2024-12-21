@@ -10,11 +10,12 @@ import { Eye, Tag } from "lucide-react";
 import HerickyBanner from "@/components/HerickyBanner";
 import { Metadata } from "next";
 
+type Params = Promise<{ category: string }>;
 interface CategoryPageProps {
-    params: { category: any };
-}
-const Category = async ({ params }: CategoryPageProps) => {
-	const category = (await params).category;
+	params: Params;
+}  
+const Category = async ({ params }: { params: Params }) => {
+	const { category } = await params;
 	const categorymain = await client.fetch(CATEGORY_FETCH_QUERY, { category });
 	if (!categorymain || categorymain.length === 0) return notFound();
 
@@ -102,8 +103,8 @@ const Category = async ({ params }: CategoryPageProps) => {
 
 export default Category;
 
-export async function generateMetadata({params}:CategoryPageProps): Promise<Metadata> {
-    const { category } = await params; // Await the `params` object if required
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+	const { category } = await params; // Await the `params` object if required
     return {
         title: `${category} | SwiftBuy`,
         description: `Browse our ${category} collection`,
